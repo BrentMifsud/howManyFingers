@@ -18,12 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var guessBox: UITextField!
     @IBOutlet weak var answerLabel: UILabel!
     @IBAction func guess(_ sender: UIButton) {
-        let numberOfFingers = Int(arc4random_uniform(5)+1)
+        let numberOfFingers = Int(arc4random_uniform(6))
         
         if Int(guessBox.text!) == nil {
             answerLabel.text = "Invalid Guess"
-        }else if Int(guessBox.text!)! > 5 || Int(guessBox.text!)! < 1{
-            answerLabel.text = "Must be between 1 and 5"
+        }else if Int(guessBox.text!)! > 5 || Int(guessBox.text!)! < 0{
+            answerLabel.text = "Must be between 0 and 5"
         }else if Int(guessBox.text!) == numberOfFingers{
             answerLabel.text = "You are correct!"
         }else{
