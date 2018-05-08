@@ -14,7 +14,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    @IBOutlet weak var guessBox: UITextField!
+    @IBOutlet weak var answerLabel: UILabel!
+    @IBAction func guess(_ sender: UIButton) {
+        let numberOfFingers = Int(arc4random_uniform(5)+1)
+        
+        if Int(guessBox.text!) == nil {
+            answerLabel.text = "Invalid Guess"
+        }else if Int(guessBox.text!)! > 5 || Int(guessBox.text!)! < 1{
+            answerLabel.text = "Must be between 1 and 5"
+        }else if Int(guessBox.text!) == numberOfFingers{
+            answerLabel.text = "You are correct!"
+        }else{
+            answerLabel.text = "Wrong! It was a \(numberOfFingers)."
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
